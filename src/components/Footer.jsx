@@ -1,14 +1,22 @@
-import React from 'react'
+import React from 'react';
 import {
     Github,
-    Linkedin, Twitter, GraduationCap
+    Linkedin,
+    Twitter,
+    GraduationCap,
+    ArrowUp
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+    // Scroll to top function
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <footer className="bg-gray-900 text-white py-12 rounded-tl-[50px]">
+        <footer className="bg-gray-900 text-white py-12 rounded-tl-[50px] relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     <div className="space-y-4">
@@ -103,12 +111,21 @@ const Footer = () => {
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-                    <p>© 2024 SocYGen EduTech. All rights reserved.</p>
+                    <p>© 2024 SocyGen EduTech. All rights reserved.</p>
                 </div>
             </div>
-        </footer>
 
-    )
+            {/* Scroll to Top Button */}
+            <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={scrollToTop}
+                className="fixed bottom-10 right-10 bg-purple-500 text-white p-3 rounded-full shadow-lg hover:bg-purple-600 transition-all"
+            >
+                <ArrowUp className="w-6 h-6" />
+            </motion.button>
+        </footer>
+    );
 }
 
-export default Footer
+export default Footer;
